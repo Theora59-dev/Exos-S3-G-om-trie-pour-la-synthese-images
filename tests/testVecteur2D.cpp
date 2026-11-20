@@ -3,9 +3,12 @@
  */
 #include "vecteur_2d.h"
 #include <cstdio>
+#include <iostream>
+#include <string>
 
 int main() {
 	Vecteur2D v(5, 8);
-	printf("v = (%lf, %lf)\n", v.x, v.y);
+	// printf("%s)\n", (string)v);
+	std::cout << (string)v << endl;
 	return 0;
 }
