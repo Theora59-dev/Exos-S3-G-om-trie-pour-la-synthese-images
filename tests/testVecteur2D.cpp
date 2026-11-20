@@ -2,7 +2,6 @@
  * Test les fonctionnalitées de la classe Vecteur2D
  */
 #include "vecteur_2d.h"
-#include <cstdio>
 #include <iostream>
 #include <string>
 
