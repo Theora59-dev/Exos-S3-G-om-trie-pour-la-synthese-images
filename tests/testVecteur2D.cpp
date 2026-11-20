@@ -9,6 +9,6 @@
 int main() {
 	Vecteur2D v(5, 8);
 	// printf("%s)\n", (string)v);
-	std::cout << (string)v << endl;
+	std::cout << (std::string)v << std::endl;
 	return 0;
 }

@@ -3,34 +3,32 @@
  * La classe est munie de toutes les opérations pour réaliser des constructions
  * géométrie
  */
+#pragma once
 
-#include <SFML/Window.hpp>
-#include <iostream>
-#include <sstream>
+#include <ostream>
 #include <string>
-
-using namespace std;
 
 class Vecteur2D {
 
   public:
-	double x, y = 0;
+	double x, y;
 
 	// Constructeurs
-	Vecteur2D(const double &x = 0, const double &y = 0) : x(x), y(y) { /* Nothing else */ }
-	Vecteur2D(Vecteur2D const &v) : x(v.x), y(v.y) { /* Nothing else */ }
+	Vecteur2D(double x = 0.0, double y = 0.0);
+	Vecteur2D(const Vecteur2D &v);
 
-	operator string() const {
-		ostringstream oss;
-		oss << "Vecteur2D(x=" << x << ", y=" << y << ")";
-		return oss.str();
-	}
+	operator std::string() const;
+	friend std::ostream &operator<<(std::ostream &o, const Vecteur2D &v);
 
-	const Vecteur2D operator+(const Vecteur2D &v) const {
-		return Vecteur2D(this->x + v.x, this->y + v.y);
-	}
-	const Vecteur2D operator-() const { return Vecteur2D(-this->x, -this->y); }
+	Vecteur2D operator+(const Vecteur2D &v) const;
+	Vecteur2D operator-() const;
+	friend Vecteur2D operator*(double a, const Vecteur2D &v);
+	Vecteur2D operator*(double a) const;
+	friend Vecteur2D operator-(const Vecteur2D &v1, const Vecteur2D &v2);
 
-	const double scalaire(const Vecteur2D &v) const { return this->x * v.x + this->y * v.y; }
+	Vecteur2D &operator+=(const Vecteur2D &v);
+	Vecteur2D &operator-=(const Vecteur2D &v);
+	Vecteur2D &operator*=(const Vecteur2D &v);
+
+	double scalaire(const Vecteur2D &v) const;
 };
-const Vecteur2D operator-(const Vecteur2D &v1, const Vecteur2D &v2) { return v1 + -v2; }
